@@ -6,6 +6,7 @@ import { UserCreationAttributes } from "../interfaces/user.interface";
 export const getUsers = async (_req: Request, res: Response) => {
 
   // este es el metodo de sequieslize para enlistar todos los usuarios de la tabla
+  // dentro del modelo de findall podemos agregar los atributos que deseamos llamar{atrtibutes:[nombre]}
   const users = await User.findAll();
   res.status(200).json({ message: "usuarios encontrados", data: users });
 };
