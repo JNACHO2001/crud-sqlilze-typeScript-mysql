@@ -1,17 +1,20 @@
-
-// importamos los tipos de datos de la base y el modelo 
-import { DataTypes, Model } from "sequelize";
-// llamamos a ala base de datos
+import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/db";
-// definimos el molde de esa clase 
-class User extends Model {
+import { userAttributes, UserCreationAttributes } from "../interfaces/user.interface";
+
+class User extends Model<userAttributes, UserCreationAttributes> implements userAttributes {
+  public id!: number;
   public name!: string;
   public email!: string;
 }
 
 User.init(
   {
-   
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     name: {
       type: DataTypes.STRING(100),
       allowNull: false,
@@ -23,7 +26,6 @@ User.init(
     },
   },
   {
-    // le decimos que esa clase corresponde a la tabla users 
     sequelize,
     tableName: "users",
     timestamps: true,

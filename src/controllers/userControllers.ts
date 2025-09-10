@@ -1,6 +1,7 @@
 import type { Request, Response } from "express";
 // llamamos al modelo para hacer referencia a la tabla 
 import User from "../models/user";
+import { UserCreationAttributes } from "../interfaces/user.interface";
 
 export const getUsers = async (_req: Request, res: Response) => {
 
@@ -18,7 +19,8 @@ export const getUser = async (req: Request, res: Response) => {
 export const createUser = async (req: Request, res: Response) => {
   try {
     // este es el metodo para insetar usuarios es las tablas 
-    const user = await User.create(req.body);
+    const data:UserCreationAttributes=req.body
+    const user = await User.create(data);
     res.status(201).json({ message: "fue creado", data: user });
   } catch (error) {
     res.status(500).json({ error, message: "no fue posible la creacion" });
