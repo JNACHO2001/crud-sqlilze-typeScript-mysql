@@ -22,7 +22,7 @@ export const createUser = async (req: Request, res: Response) => {
     // este es el metodo para insetar usuarios es las tablas 
     const data:UserCreationAttributes=req.body
     const user = await User.create(data);
-    res.status(201).json({ message: "fue creado", data: user });
+    res.status(201).json({ message: "fue creado", data:user.name });
   } catch (error) {
     res.status(500).json({ error, message: "no fue posible la creacion" });
   }
