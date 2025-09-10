@@ -1,7 +1,7 @@
 import { Optional } from "sequelize";
 
 export interface userAttributes {
-  id:number
+id:number
   name: string;
   email: string;
 }
