@@ -27,7 +27,7 @@ export async function getUser(req: Request, res: Response) {
   }
 }
 
-export const createUser = async (req: Request, res: Response) => {
+export async function createUser(req: Request, res: Response) {
   try {
     // este es el metodo para insetar usuarios es las tablas
     const data: UserCreationAttributes = req.body;
@@ -36,7 +36,7 @@ export const createUser = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({ error, message: "no fue posible la creacion" });
   }
-};
+}
 
 export const updateUser = async (req: Request, res: Response) => {
   // este metodo es para buscar un usuario por id
