@@ -32,3 +32,11 @@ export const updateUser = async (req: Request, res: Response) => {
   res.status(201).json({message:"fue actualizado ",data:user});
 };
 
+
+export const deleteUser = async (req: Request, res: Response) => {
+  const user = await User.findByPk(req.params.id);
+  if (!user) return res.status(404).json({ message: "User not found" });
+  await user.destroy();
+  res.json({ message: "User deleted" });
+};
+
