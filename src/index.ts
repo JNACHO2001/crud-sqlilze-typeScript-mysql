@@ -4,6 +4,9 @@ import userRoute from "./routes/userRoute";
 
 const app = express();
 app.use(express.json());
+app.get("/", (_req, res) => {
+  res.json({ message: "Servidor preparado" });
+});
 app.use("/users", userRoute);
 
 sequelize.sync({ force: false }).then(() => {
