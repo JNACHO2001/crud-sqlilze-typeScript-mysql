@@ -28,6 +28,8 @@ npm install --save-dev typescript ts-node-dev @types/express
  `typescript`: soporte TS.  
  `ts-node-dev`: recarga automática.  
  `@types/express`: tipados.
+ `@types/bcrypt`: tipados.
+ 
 
 ---
 
@@ -77,4 +79,5 @@ src/
 ```
 
 ---
+
 
