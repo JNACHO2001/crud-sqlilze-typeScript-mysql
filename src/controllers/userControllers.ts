@@ -6,7 +6,9 @@ import { UserCreationAttributes } from "../interfaces/user.interface";
 export async function getUsers(_req: Request, res: Response) {
   try {
     const users = await User.findAll();
-    res.status(200).json({ message: "Usuarios encontrados", data: users });
+    if (users.length === 0) {
+      res.status(200).json({ message: "no hay usuarios creados" });
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al obtener los usuarios" });
@@ -42,13 +44,14 @@ export async function createUser(req: Request, res: Response) {
     const user = await User.create(data);
 
     // 4. Devolver respuesta exitosa
-    res.status(201).json({ message: "Usuario creado correctamente", data: user.name });
+    res
+      .status(201)
+      .json({ message: "Usuario creado correctamente", data: user.name });
   } catch (error) {
     // 5. Manejar errores inesperados
     res.status(500).json({ error, message: "No fue posible la creación" });
   }
 }
-
 
 export const updateUser = async (req: Request, res: Response) => {
   // este metodo es para buscar un usuario por id
