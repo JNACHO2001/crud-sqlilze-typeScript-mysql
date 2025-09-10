@@ -29,14 +29,26 @@ export async function getUser(req: Request, res: Response) {
 
 export async function createUser(req: Request, res: Response) {
   try {
-    // este es el metodo para insetar usuarios es las tablas
     const data: UserCreationAttributes = req.body;
+
+    // 1. Verificar si ya existe un usuario con ese email
+    const existingUser = await User.findOne({ where: { email: data.email } });
+    if (existingUser) {
+      // 2. Si existe, respondemos con error 400 o 409 (conflicto)
+      return res.status(409).json({ message: "Este correo ya existe" });
+    }
+
+    // 3. Crear el usuario porque el correo no está registrado
     const user = await User.create(data);
-    res.status(201).json({ message: "fue creado", data: user.name });
+
+    // 4. Devolver respuesta exitosa
+    res.status(201).json({ message: "Usuario creado correctamente", data: user.name });
   } catch (error) {
-    res.status(500).json({ error, message: "no fue posible la creacion" });
+    // 5. Manejar errores inesperados
+    res.status(500).json({ error, message: "No fue posible la creación" });
   }
 }
+
 
 export const updateUser = async (req: Request, res: Response) => {
   // este metodo es para buscar un usuario por id
