@@ -1,6 +1,7 @@
 import express from "express";
 import sequelize from "./config/db";
 import userRoute from "./routes/userRoute";
+import clienteRoute from "./routes/clienteRoute"
 
 const app = express();
 app.use(express.json());
@@ -8,6 +9,7 @@ app.get("/", (_req, res) => {
   res.json({ message: "Servidor preparado" });
 });
 app.use("/users", userRoute);
+app.use("/clientes",clienteRoute)
 
 sequelize.sync({ force: false }).then(() => {
   console.log("conectado");
@@ -16,3 +18,4 @@ sequelize.sync({ force: false }).then(() => {
     console.log("servidor preparado  http://localhost:3000 ");
   });
 });
+

@@ -1,4 +1,4 @@
-import { DataTypes, Model, } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db";
 import bcrypt from "bcrypt"
 import { userAttributes, UserCreationAttributes } from "../interfaces/user.interface";
