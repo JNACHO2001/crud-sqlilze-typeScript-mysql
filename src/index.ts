@@ -2,7 +2,7 @@ import express from "express";
 import sequelize from "./config/db";
 import userRoute from "./routes/userRoute";
 import clienteRoute from "./routes/clienteRoute"
-import "./models/index"
+import "./models/index" // importamos las relaciones 
 const app = express();
 app.use(express.json());
 app.get("/", (_req, res) => {
