@@ -11,7 +11,7 @@ class Cliente
   public id!: number;
   public telefono!: string;
   public direccion!: string;
-  public userId?: number;
+  public userId!: number;
 }
 
 Cliente.init(
@@ -29,6 +29,10 @@ Cliente.init(
       type: DataTypes.STRING(200),
       allowNull: true,
     },
+    userId:{
+      type:DataTypes.INTEGER.UNSIGNED,
+      allowNull:false
+    }
   },
   {
     sequelize,

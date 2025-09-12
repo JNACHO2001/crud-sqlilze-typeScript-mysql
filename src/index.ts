@@ -2,7 +2,7 @@ import express from "express";
 import sequelize from "./config/db";
 import userRoute from "./routes/userRoute";
 import clienteRoute from "./routes/clienteRoute"
-
+import "./models/index"
 const app = express();
 app.use(express.json());
 app.get("/", (_req, res) => {
@@ -11,7 +11,7 @@ app.get("/", (_req, res) => {
 app.use("/users", userRoute);
 app.use("/clientes",clienteRoute)
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ alter:true }).then(() => {
   console.log("conectado");
 
   app.listen(3000, () => {
