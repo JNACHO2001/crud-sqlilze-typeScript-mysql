@@ -11,7 +11,7 @@ app.get("/", (_req, res) => {
 app.use("/users", userRoute);
 app.use("/clientes",clienteRoute)
 
-sequelize.sync({ alter:true }).then(() => {
+sequelize.sync({ force:true }).then(() => {
   console.log("conectado");
 
   app.listen(3000, () => {

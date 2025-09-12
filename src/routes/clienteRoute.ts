@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { getClientes } from "../controllers/clienteControllers";
+import { getClientes, postClientes } from "../controllers/clienteControllers";
 
 const router =Router()
 
 router.get("/",getClientes)
+router.post("/",postClientes)
 export default router
