@@ -32,7 +32,8 @@ Cliente.init(
     // nos debemos asegurar que tengamos el campo de la llave foreanea 
     userId:{
       type:DataTypes.INTEGER.UNSIGNED,
-      allowNull:false
+      allowNull:false,
+      unique:true
     }
   },
   {
