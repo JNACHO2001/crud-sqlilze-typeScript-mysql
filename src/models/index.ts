@@ -1,5 +1,3 @@
-
-
 // llamamos alas clases para crear las relaciones
 import User from "./user";
 import Cliente from "./cliente";
